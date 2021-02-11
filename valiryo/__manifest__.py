@@ -10,6 +10,7 @@
     'version': '13.0.1.0.1',
     'depends': [
         'base',
+        'product'
     ],
     'data': [
         'views/product_template.xml'
