@@ -11,4 +11,4 @@ _logger = logging.getLogger(__name__)
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
     
-    crm_tag_ids = fields.Many2many("crm.tag", string="Categorías CRM")
+    crm_tag_ids = fields.Many2many("crm.tag", string="Etiquetas")
