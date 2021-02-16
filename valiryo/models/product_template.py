@@ -12,3 +12,4 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
     
     crm_tag_ids = fields.Many2many("crm.tag", string="Etiquetas")
+    rutaserver = fields.Text("Server")
