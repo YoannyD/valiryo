@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//group[@name='group_general']" position="inside">
+                <field name="rutaserver" string="Server" help="Ruta de informacíon en el server" widget="url"/>
                 <field name="crm_tag_ids" widget="many2many_tags"/>
             </xpath>
         </field>
