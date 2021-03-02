@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_order_form">
+    <record id="view_order_form" model="ir.ui.view" >
         <field name="name">sale.order.form.valiryo</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-        <xpath expr="//form[1]/sheet[1]/group[@name='sale_header']/group[@name='order_details']/field[@name='date_order']" position="attributes">
-            <attribute name="attrs">{"readonly": [["state","!=","draft"]], "required": [["state","in",["sale","done"]]]}</attribute>
-            <attribute name="force_save">True</attribute>
-        </xpath>
-                       
+            <xpath expr="//field[@name='date_order']" position="replace">
+                <field name="date_order"/>
+            </xpath>                   
         </field>
     </record>
 </odoo>
