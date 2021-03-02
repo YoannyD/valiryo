@@ -11,7 +11,7 @@
     'depends': [
         'base',
         'product',
-        'sale'
+        'sale',
     ],
     'data': [
         'views/product_template.xml', 
