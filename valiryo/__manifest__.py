@@ -13,7 +13,8 @@
         'product'
     ],
     'data': [
-        'views/product_template.xml'
+        'views/product_template.xml', 
+        'views/sale_order.xml'
     ],
     'installable': True,
     'auto_install': False,
