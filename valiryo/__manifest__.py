@@ -12,10 +12,13 @@
         'base',
         'product',
         'sale',
+        'purchase',
     ],
     'data': [
         'views/product_template.xml', 
-        'views/sale_order.xml'
+        'views/sale_order.xml',
+        'report/sale_order.xml',
+        'report/purchase.xml'
     ],
     'installable': True,
     'auto_install': False,
