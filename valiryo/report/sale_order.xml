@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[5]/span[1]" position="attributes">
+        <attribute name="t-esc">line.discount</attribute>
+      </xpath>
+      <xpath expr="/t/t/div/table/thead/tr/th[5]" position="replace">
+        <th name="th_taxes" class="text-right">% disc</th>
+      </xpath>
+    </template>
+</odoo>
