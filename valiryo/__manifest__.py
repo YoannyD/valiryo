@@ -23,6 +23,7 @@
         'report/purchase.xml',
         'report/account_move.xml',
         'report/productos_factura.xml',
+        'report/purchasequotation.xml',
     ],
     'installable': True,
     'auto_install': False,
