@@ -7,5 +7,39 @@
       <xpath expr="/t/t/div/table/thead/tr/th[5]" position="replace">
         <th name="th_taxes" class="text-right">% disc</th>
       </xpath>
+      <xpath expr="/t/t/div/p[3]" position="after">
+        <div class="row"><div class="col h2"><span>Payment mode</span></div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[7]" position="after">
+          <div class="row"><div class="col"><span t-field="doc.payment_mode_id.note"/>
+          </div></div>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/p[3]/span[1]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/p[3]" position="replace"/>
+      <xpath expr="/t/t/div/div[6]" position="after">
+          <div class="row"><div class="col h2"><span>Terms and Conditions</span></div>
+          </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[9]" position="after">
+        <div class="row">
+          <div class="col">
+            <span>Concepto transferencia: </span>
+            <span t-field="doc.name"/>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"integer"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"monetary"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[5]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"integer"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[2]/p[1]" position="attributes">
+        <attribute name="t-options-widget">"date"</attribute>
+      </xpath>
     </template>
 </odoo>
