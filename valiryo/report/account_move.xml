@@ -16,7 +16,7 @@
       <xpath expr="/t[1]/t[1]/div[1]/t[2]" position="replace"/>
       <xpath expr="/t[1]/t[1]/div[1]/p[3]" position="replace"/>
       <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="replace"/>
-      <xpath expr="/t/t/div/div[3]" position="after">
+      <xpath expr="/t/t/div/p[3]" position="before">
         <div class="row">
           <div class="col h2">
             <span>Terms and Conditions</span>
@@ -62,35 +62,10 @@
       <xpath expr="/t/t/div/img" position="attributes">
         <attribute name="style" separator=";" width="50" height="25" add="margin-left:100px"/>
       </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/div[1]/div[1]" position="replace"/>
-      <xpath expr="/t/t/div/div[1]" position="before">
-        <div class="row">
-          <div class="col h2">
-            <span>Shipping Address</span>
-          </div>
-        </div>
-      </xpath>
-      <xpath expr="/t/t/div/div[1]" position="after">
-        <div class="row address">
-          <div class="col-5">
-            <div t-field="o.partner_shipping_id" t-options-widget="'contact'"/>
-          </div>
-          <div class="col-5 offset-2"/>
-        </div>
-      </xpath>
-      <xpath expr="/t/t/div/h2/span[7]" position="attributes">
-        <attribute name="style" separator=";" add="margin-top:50px"/>
-      </xpath>
-      <xpath expr="/t/t/div/h2" position="attributes">
-        <attribute name="style" separator=";" add="margin-top:10px"/>
-      </xpath>
-      <xpath expr="/t/t/div/h2" position="attributes">
-        <attribute name="style" separator=";" add="margin-bottom:10px"/>
-      </xpath>
-      <xpath expr="/t/t/div/div[3]" position="after">
+      <xpath expr="/t/t/div/h2" position="before">
         <div class="row">
           <div class="col">
-            <span>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”</span>
+            <span><p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”</p></span>
           </div>
         </div>
       </xpath>
@@ -100,5 +75,7 @@
       <xpath expr="/t/t/div/div[4]/div" position="attributes">
         <attribute name="style" separator=";" add="margin-bottom:10px"/>
       </xpath>
+      <xpath expr="/t/t/div/div[1]" position="before"><div class="row"><div class="col h2"><span>Shipping address</span></div></div></xpath>
+      <xpath expr="/t/t/div/div[1]" position="after"><div class="row address"><div class="col-5"><div t-field="o.partner_shipping_id" t-options-widget="'contact'"/></div><div class="col-5 offset-2"/></div></xpath>
     </template>
 </odoo>
