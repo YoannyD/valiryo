@@ -13,6 +13,8 @@
         'product',
         'sale',
         'purchase',
+        'account',
+        'account_reports',
     ],
     'data': [
         'views/product_template.xml', 
