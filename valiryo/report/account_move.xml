@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sale_stock_report_invoice_document_valiryo" inherit_id="sale_stock.sale_stock_report_invoice_document">
+    <xpath expr="/t/t/div/h2" position="before">
+        <div class="row">
+          <div class="col">
+            <span>
+              <p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”</p>
+              <p>
+                <br/>
+              </p>
+            </span>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"integer"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[1]/p[1]" position="attributes">
+        <attribute name="t-options-widget">"date"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[2]/p[1]" position="attributes">
+        <attribute name="t-options-widget">"date"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[3]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"monetary"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[6]/span[1]" position="attributes">
+        <attribute name="t-options-widget">"monetary"</attribute>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="attributes">
+        <attribute name="t-if"/>
+      </xpath>
+      <xpath expr="/t[1]/t[1]/div[1]/t[2]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/p[3]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="replace"/>
+      <xpath expr="/t/t/div/div[3]" position="after">
+        <div class="row">
+          <div class="col h2">
+            <span>Terms and Conditions</span>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/p[3]" position="after">
+        <div class="row">
+          <div class="col h2">
+            <span>Payment mode</span>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[5]" position="after">
+        <div class="row">
+          <div class="col">
+            <span t-field="o.payment_mode_id.note"/>
+          </div>
+        </div>
+      </xpath>
+      <xpath expr="/t/t/div/div[6]" position="after">
+        <div class="row">
+          <div class="col">
+            <span>Please use the following communication for your payment: </span>
+            <span t-field="o.invoice_origin"/>
+          </div>
+        </div>
+      </xpath>
+        
+    </template>
+</odoo>

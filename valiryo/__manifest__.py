@@ -19,6 +19,8 @@
         'views/sale_order.xml',
         'report/sale_order.xml',
         'report/purchase.xml'
+        'report/account_move.xml'
+        'report/productos_factura.xml'
     ],
     'installable': True,
     'auto_install': False,
