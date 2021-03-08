@@ -41,5 +41,8 @@
       <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[2]/p[1]" position="attributes">
         <attribute name="t-options-widget">"date"</attribute>
       </xpath>
+     <xpath expr="/t/t/div/h2/t[1]/span[2]" position="attributes">
+        <attribute name="style" separator=";" add="margin-top:10px"/>
+      </xpath>
     </template>
 </odoo>
