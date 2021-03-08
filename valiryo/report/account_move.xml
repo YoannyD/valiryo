@@ -4,9 +4,6 @@
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
         <attribute name="t-options-widget">"integer"</attribute>
       </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[1]/p[1]" position="attributes">
-        <attribute name="t-options-widget">"date"</attribute>
-      </xpath>
       <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[2]/p[1]" position="attributes">
         <attribute name="t-options-widget">"date"</attribute>
       </xpath>
