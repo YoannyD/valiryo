@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="sale_stock_report_invoice_document_valiryo" inherit_id="sale_stock.sale_stock_report_invoice_document">
+    <template id="sale_stock_report_invoice_document_valiryo" inherit_id="sale_stock_report_invoice_document">
     <xpath expr="/t/t/div/h2" position="before">
         <div class="row">
           <div class="col">
