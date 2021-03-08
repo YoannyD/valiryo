@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_invoice_valiryo" inherit_id="report_invoice_document">
+    <template id="sale_stock_report_invoice_document" inherit_id="sale_stock.sale_stock_report_invoice_document">
       <xpath expr="/t/t/div/div[7]" position="after">
             <t t-set="lot_values" t-value="o._get_invoiced_lot_values()"/>
             <t t-if="lot_values">
