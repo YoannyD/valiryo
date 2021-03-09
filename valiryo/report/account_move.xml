@@ -24,7 +24,7 @@
         
         <xpath expr="//div[hasclass('page')]" position="inside">
             <div class="row">
-                <div class="col-7">
+                <div class="col-8">
                     <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" style="display:none">
                         Please use the following communication for your payment : <b><span t-field="o.payment_reference"/></b>
                     </p>
@@ -68,34 +68,12 @@
                         </p>
                     </div>
                 </div>
-                <div class="col-5">
+                <div class="col-4 pt-4">
                     <img class="img-fluid" src="/valiryo/static/src/img/sello_valiryo.png"/>
                 </div>
             </div>
         </xpath>
-        
-<!--       <xpath expr="/t/t/div/p[3]" position="after">
-        <div class="row">
-          <div class="col h2">
-            <span>Payment mode</span>
-          </div>
-        </div>
-      </xpath>
-      <xpath expr="/t/t/div/div[5]" position="after">
-        <div class="row">
-          <div class="col">
-            <span t-field="o.payment_mode_id.note"/>
-          </div>
-        </div>
-      </xpath>
-      <xpath expr="/t/t/div/div[6]" position="after">
-        <div class="row">
-          <div class="col">
-            <span>Please use the following communication for your payment: </span>
-            <span t-field="o.invoice_origin"/>
-          </div>
-        </div>
-      </xpath> -->
+
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]/span[1]" position="attributes">
         <attribute name="t-esc">line.discount</attribute>
       </xpath>
