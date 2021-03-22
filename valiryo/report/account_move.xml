@@ -99,5 +99,36 @@
         <attribute name="style" separator=";" add="margin-bottom:10px"/>
       </xpath>
       <xpath expr="/t[1]/t[1]/div[1]/div[2]/div[1]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/div[4]/div[1]/p[2]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/div[3]/t[2]/table[1]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/t[3]/table[1]" position="replace"/>
+      <xpath expr="/t/t/div/div[4]" position="after">
+                <t t-set="lot_values" t-value="o._get_invoiced_lot_values()"/>
+                <t t-if="lot_values">
+                    <br/>
+                    <table groups="sale_stock.group_lot_on_invoice" class="table table-sm" style="width: 50%;" name="invoice_snln_table">
+                        <thead>
+                            <tr>
+                                <th><span>Product</span></th>
+                                <th class="text-right"><span>Quantity</span></th>
+                                <th class="text-right"><span>SN/LN</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="lot_values" t-as="snln_line">
+                                <tr>
+                                    <td><t t-esc="snln_line['product_name']"/></td>
+                                    <td class="text-right">
+                                        <t t-esc="snln_line['quantity']"/>
+                                        <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>
+                                    </td>
+                                    <td class="text-right"><t t-esc="snln_line['lot_name']"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </t>
+      </xpath>
     </template>
 </odoo>
