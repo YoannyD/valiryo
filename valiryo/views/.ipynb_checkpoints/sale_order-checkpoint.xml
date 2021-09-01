@@ -14,7 +14,7 @@
         </field>
     </record>
     
-     <record model="ir.ui.view" id="view_order_tree">
+ <record model="ir.ui.view" id="view_order_tree">
         <field name="name">sale.order.tree.valiryo</field>
         <field name="inherit_id" ref="sale.view_order_tree"/>
         <field name="model">sale.order</field>
@@ -35,7 +35,10 @@
               </xpath>
         </field>
     </record>
-     
+    
+    
+    
+    
 </odoo>
 
 
