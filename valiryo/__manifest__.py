@@ -10,6 +10,7 @@
     'version': '13.0.1.0.1',
     'depends': [
         'base',
+        'mail',
         'product',
         'sale',
         'purchase',
@@ -26,6 +27,7 @@
         'views/product_template.xml', 
         'views/sale_order.xml',  
         'views/stock_picking.xml',
+        'views/web.xml',
     ],
     'installable': True,
     'auto_install': False,
