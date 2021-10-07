@@ -15,8 +15,7 @@
           <div class="row"><div class="col"><span t-field="doc.payment_mode_id.note"/>
           </div></div>
       </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/p[3]/span[1]" position="replace"/>
-      <xpath expr="/t[1]/t[1]/div[1]/p[3]" position="replace"/>
+
       <xpath expr="/t/t/div/div[6]" position="after">
           <div class="row"><div class="col h2"><span>Terms and Conditions</span></div>
           </div>
@@ -44,5 +43,7 @@
      <xpath expr="/t/t/div/h2/t[1]/span[2]" position="attributes">
         <attribute name="style" separator=";" add="margin-top:10px"/>
       </xpath>
+     <xpath expr="/t[1]/t[1]/div[1]/div[9]/div[1]" position="replace"/>
+     <xpath expr="/t[1]/t[1]/div[1]/div[8]/div[1]" position="replace"/>
     </template>
 </odoo>
