@@ -23,7 +23,6 @@
         'report/account_move.xml',
         'report/productos_factura.xml',
         'report/purchasequotation.xml',
-        'views/res_config_settings.xml', 
         'views/product_template.xml', 
         'views/sale_order.xml',  
         'views/stock_picking.xml',
