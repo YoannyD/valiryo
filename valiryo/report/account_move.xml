@@ -10,25 +10,43 @@
     </record>
     
     <template id="report_invoice_document_valiryo" inherit_id="account.report_invoice_document">
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
+            <attribute name="t-options-widget">"integer"</attribute>
+        </xpath>
+
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[6]/span[1]" position="attributes">
+            <attribute name="t-options-widget">"monetary"</attribute>
+        </xpath>
+        
+        <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="attributes">
+            <attribute name="t-if"/>
+        </xpath>
+        
+<!--       <xpath expr="/t[1]/t[1]/div[1]/t[2]" position="replace"/> -->
+
+        <xpath expr="//div[@name='comment']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
     
-      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
-        <attribute name="t-options-widget">"integer"</attribute>
-      </xpath>
-
-      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[6]/span[1]" position="attributes">
-        <attribute name="t-options-widget">"monetary"</attribute>
-      </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="attributes">
-        <attribute name="t-if"/>
-      </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/t[2]" position="replace"/>
-
-        <xpath expr="//p[@name='comment']" position="replace"/>
-        <xpath expr="//p[@name='payment_term']" position="replace"/>
-        <xpath expr="//p[@name='payment_communication']" position="replace"/>
-        <xpath expr="//p[@name='note']" position="replace"/>
-        <xpath expr="//p[@name='incoterm']" position="replace"/>
-        <xpath expr="//div[@id='qrcode']" position="replace"/>
+        <xpath expr="//p[@name='payment_term']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+        
+        <xpath expr="//p[@name='payment_communication']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+            
+        <xpath expr="//p[@name='note']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+            
+        <xpath expr="//p[@name='incoterm']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+            
+        <xpath expr="//div[@id='qrcode']" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
         
         <xpath expr="//div[hasclass('page')]" position="inside">
             <div class="row">
@@ -47,7 +65,7 @@
                     <p t-if="o.narration" name="comment" >
                         <span t-field="o.narration"/>
                     </p>
-                    <div class="row">
+<!--                     <div class="row">
                       <div class="col h2">
                         <span>Payment mode</span>
                       </div>
@@ -56,7 +74,7 @@
                       <div class="col">
                         <span t-field="o.payment_mode_id.note"/>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                       <div class="col">
                         <span>Please use the following communication for your payment: </span>
@@ -82,78 +100,65 @@
             </div>
         </xpath>
         
+<!--         <xpath expr="/t[1]/t[1]/t[2]/div[1]" position="attributes"><attribute name="t-options-fields">['address', 'name', 'phone']</attribute></xpath> -->
         
-      <xpath expr="/t[1]/t[1]/t[2]/div[1]" position="attributes"><attribute name="t-options-fields">['address', 'name', 'phone']</attribute></xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
-      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]" position="replace"/>
-      <xpath expr="/t/t/div/h2" position="before">
-        <div class="row">
-          <div class="col">
-            <span><p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”</p></span>
-          </div>
-        </div>
-      </xpath>
-      <xpath expr="/t/t/div/div[4]/div" position="attributes">
-        <attribute name="style" separator=";" add="margin-top:10px"/>
-      </xpath>
-      <xpath expr="/t/t/div/div[4]/div" position="attributes">
-        <attribute name="style" separator=";" add="margin-bottom:10px"/>
-      </xpath>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
         
-      <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="replace"/>
-      <xpath expr="/t[1]/t[1]/div[1]/div[4]/div[1]/p[2]" position="replace"/>
-      <xpath expr="/t[1]/t[1]/div[1]/div[3]/t[2]/table[1]" position="replace"/>
-      <xpath expr="/t[1]/t[1]/div[1]/t[3]/table[1]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]" position="replace"/>
+        
+        <xpath expr="/t/t/div/h2" position="before">
+            <div class="row">
+              <div class="col">
+                <span><p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”</p></span>
+              </div>
+            </div>
+        </xpath>
+        
+<!--         <xpath expr="/t/t/div/div[4]/div" position="attributes">
+            <attribute name="style" separator=";" add="margin-top:10px"/>
+            <attribute name="style" separator=";" add="margin-bottom:10px"/>
+        </xpath> -->
+        
+        <xpath expr="/t[1]/t[1]/div[1]/p[1]" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+        
+<!--         <xpath expr="/t[1]/t[1]/div[1]/div[4]/div[1]/p[2]" position="replace"/> -->
+        
+        <xpath expr="/t[1]/t[1]/div[1]/div[3]/t[2]/table[1]" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath>
+        
+<!--         <xpath expr="/t[1]/t[1]/div[1]/t[3]/table[1]" position="attributes">
+            <attribute name="style">display:none</attribute>
+        </xpath> -->
 
-      <xpath expr="/t/t/div/div[4]" position="after">
-                <t t-set="lot_values" t-value="o._get_invoiced_lot_values()"/>
-                <t t-if="lot_values">
-                    <br/>
-                    <table groups="sale_stock.group_lot_on_invoice" class="table table-sm" style="width: 50%;" name="invoice_snln_table">
-                        <thead>
+        <xpath expr="/t/t/div/div[4]" position="after">
+            <t t-set="lot_values" t-value="o._get_invoiced_lot_values()"/>
+            <t t-if="lot_values">
+                <br/>
+                <table groups="sale_stock.group_lot_on_invoice" class="table table-sm" style="width: 50%;" name="invoice_snln_table">
+                    <thead>
+                        <tr>
+                            <th><span>Product</span></th>
+                            <th class="text-right"><span>Quantity</span></th>
+                            <th class="text-right"><span>SN/LN</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="lot_values" t-as="snln_line">
                             <tr>
-                                <th><span>Product</span></th>
-                                <th class="text-right"><span>Quantity</span></th>
-                                <th class="text-right"><span>SN/LN</span></th>
+                                <td><t t-esc="snln_line['product_name']"/></td>
+                                <td class="text-right">
+                                    <t t-esc="snln_line['quantity']"/>
+                                    <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right"><t t-esc="snln_line['lot_name']"/></td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <t t-foreach="lot_values" t-as="snln_line">
-                                <tr>
-                                    <td><t t-esc="snln_line['product_name']"/></td>
-                                    <td class="text-right">
-                                        <t t-esc="snln_line['quantity']"/>
-                                        <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>
-                                    </td>
-                                    <td class="text-right"><t t-esc="snln_line['lot_name']"/></td>
-                                </tr>
-                            </t>
-                        </tbody>
-                    </table>
-                </t>
-      </xpath>
-        
-<!--        <xpath expr="//p[1]" position = "inside"> 
-          <t t-if='facturasimplificada'> 
-              <div id="hola" style = "width:300px; heigth:300px;background:red;">asdfa</div>
-          </t>
-         <t t-if= 'not facturasimplificada'> 
-              <div id="hola" style = "width:300px; heigth:300px;background:red;">mikel</div>
-          </t>
-      </xpath>-->
-    </template>
-    
-<!--
-<template id="report_invoice_document_valiryosimplificada2">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="o">
-                <t t-set="lang" t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
-                <t t-call="valiryo.report_invoice_document_valiryo" t-lang="lang">
-                    <t t-set = "facturasimplificada" t-value = "True"/>
-                </t>
+                        </t>
+                    </tbody>
+                </table>
             </t>
-        </t>
-    </template>-->
-    
-
+        </xpath>
+    </template>
 </odoo>
