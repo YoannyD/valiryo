@@ -18,6 +18,7 @@
         'account_reports',
     ],
     'data': [
+        'security/valiryo_security.xml',
         'report/sale_order.xml',
         'report/purchase.xml',
         'report/account_move.xml',
@@ -26,6 +27,7 @@
         'views/product_template.xml', 
         'views/sale_order.xml',  
         'views/stock_picking.xml',
+        'views/account_move.xml',
     ],
     'assets': {
         'web.assets_backend': [
