@@ -12,6 +12,18 @@
             <xpath expr="//button[@name='action_post'][2]" position="attributes">
                 <attribute name="groups">valiryo.group_valiryo_publicar_facturas</attribute>
             </xpath>
+            
+            <xpath expr="//field[@name='invoice_line_ids']/tree[1]/field[@name='analytic_account_id']" position="attributes">
+                <attribute name="attrs">{'required': [('account_internal_group', 'in', ['income', 'expense'])]}</attribute>
+            </xpath>
+            
+            <xpath expr="//field[@name='invoice_line_ids']/form[1]//field[@name='analytic_account_id']" position="after">
+                <field name="account_internal_group" invisible="1"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='invoice_line_ids']/form[1]//field[@name='analytic_account_id']" position="attributes">
+                <attribute name="attrs">{'required': [('account_internal_group', 'in', ['income', 'expense'])]}</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
