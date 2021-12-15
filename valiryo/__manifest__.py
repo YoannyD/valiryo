@@ -28,6 +28,7 @@
         'views/sale_order.xml',  
         'views/stock_picking.xml',
         'views/account_move.xml',
+        'views/res_partner.xml',
     ],
     'assets': {
         'web.assets_backend': [
