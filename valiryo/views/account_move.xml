@@ -24,6 +24,10 @@
             <xpath expr="//field[@name='invoice_line_ids']/form[1]//field[@name='analytic_account_id']" position="attributes">
                 <attribute name="attrs">{'required': [('account_internal_group', 'in', ['income', 'expense'])]}</attribute>
             </xpath>
+            
+            <xpath expr="//page[@id='other_tab']//field[@name='partner_bank_id']" position="before">
+                <field name="transferencia_bancaria"/>
+            </xpath>
         </field>
     </record>
 </odoo>

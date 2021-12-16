@@ -10,8 +10,6 @@
     </record>-->
     
     <template id="report_invoice_document_valiryo" inherit_id="account.report_invoice_document">
-        
-        
         <xpath expr="/t/t/div/h2" position="before">
             <div class="row">
               <div class="col">
@@ -19,47 +17,33 @@
               </div>
             </div>
         </xpath>
-        <xpath expr="//div[hasclass('clearfix')]" position="inside">
+        
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]" position="replace"/>
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
+        
+        <xpath expr="//div[hasclass('page')]" position="inside">
             <div class="row">
-                <div class="col-8">
-                    <p t-if="o.move_type in ('out_invoice', 'in_refund') and o.payment_reference" name="payment_communication" style="display:none">
-                        Please use the following communication for your payment : <b><span t-field="o.payment_reference"/></b>
-                    </p>
-                    <p t-if="o.invoice_payment_term_id" name="payment_term">
-                        <span t-field="o.invoice_payment_term_id.note"/>
-                    </p>
-                    <div class="row">
-                      <div class="col h2">
-                        <span>Terms and Conditions</span>
-                      </div>
-                    </div>
-                    <p t-if="o.narration" name="comment" >
-                        <span t-field="o.narration"/>
-                    </p>
-                    <div class="row">
-                      <div class="col">
-                        <span>Please use the following communication for your payment: </span>
-                        <span t-field="o.invoice_origin"/>
-                      </div>
-                    </div>
-                    <p t-if="o.fiscal_position_id.note" name="note">
-                        <span t-field="o.fiscal_position_id.note"/>
-                    </p>
-                    <p t-if="o.invoice_incoterm_id" name="incoterm">
-                        <strong>Incoterm: </strong><span t-field="o.invoice_incoterm_id.code"/> - <span t-field="o.invoice_incoterm_id.name"/>
-                    </p>
-                    <div id="qrcode" t-if="o.display_qr_code">
-                        <p t-if="qr_code_urls.get(o.id)">
-                            <strong class="text-center">Scan me with your banking app.</strong><br/><br/>
-                            <img class="border border-dark rounded" t-att-src="qr_code_urls[o.id]"/>
-                        </p>
-                    </div>
-                </div>
                 <div class="col-4 pt-4">
                     <img class="img-fluid" src="/valiryo/static/src/img/sello_valiryo.png"/>
                 </div>
             </div>
         </xpath>
         
+        <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="after">
+            <t t-if="o.transferencia_bancaria">
+                <h4 style="margin-bottom:4px;">Método de pago:</h4>
+                ENTIDAD BANCARIA: <span t-field="o.partner_bank_id.bank_id"/> <br/>
+                <t t-if="o.partner_bank_id.bank_id.bic">
+                    SWIFT: <span t-field="o.partner_bank_id.bank_id.bic"/> <br/>
+                </t>
+
+                IBAN: <span t-field="o.partner_bank_id.acc_number"/> <br/>
+                
+                <t t-if="o.partner_bank_id.partner_id">
+                    BENEFICIARIO: <span t-field="o.partner_bank_id.partner_id"/> <br/>
+                </t>
+                <br/> <br/>
+            </t>
+        </xpath>
     </template>
 </odoo>
