@@ -21,7 +21,7 @@
         <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]" position="replace"/>
         <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
         
-        <xpath expr="//div[hasclass('page')]" position="inside">
+        <xpath expr="//div[@id='total']" position="after">
             <div class="row">
                 <div class="col-4 pt-4">
                     <img class="img-fluid" src="/valiryo/static/src/img/sello_valiryo.png"/>
@@ -43,6 +43,37 @@
                     BENEFICIARIO: <span t-field="o.partner_bank_id.partner_id"/> <br/>
                 </t>
                 <br/> <br/>
+            </t>
+        </xpath>
+    </template>
+    
+    <template id="stock_account_report_invoice_document" inherit_id="stock_account.stock_account_report_invoice_document">
+        <xpath expr="//t[@t-if='lot_values']" position="replace"/>
+        
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <t t-if="lot_values">
+                <br/>
+                <table groups="stock_account.group_lot_on_invoice" class="table table-sm" style="width: 50%;" name="invoice_snln_table">
+                    <thead>
+                        <tr>
+                            <th><span>Product</span></th>
+                            <th class="text-right"><span>Quantity</span></th>
+                            <th class="text-right"><span>SN/LN</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="lot_values" t-as="snln_line">
+                            <tr>
+                                <td><t t-esc="snln_line['product_name']"/></td>
+                                <td class="text-right">
+                                    <t t-esc="snln_line['quantity']"/>
+                                    <t t-esc="snln_line['uom_name']" groups="uom.group_uom"/>
+                                </td>
+                                <td class="text-right"><t t-esc="snln_line['lot_name']"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
             </t>
         </xpath>
     </template>
