@@ -4,11 +4,13 @@
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[1]/tr[1]/t[1]/td[3]/span[1]" position="attributes">
         <attribute name="t-options-widget">"integer"</attribute>
       </xpath>
-      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[1]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
-        <attribute name="t-options-widget">"date"</attribute>
-      </xpath>
-      <xpath expr="/t/t/div/h2" position="attributes">
-        <attribute name="style" separator=";" add="margin-top:15px"/>
-      </xpath>
+        
+        <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[1]/tr[1]/t[1]/td[2]/span[1]" position="attributes">
+            <attribute name="t-options-widget">"date"</attribute>
+        </xpath>
+        
+        <xpath expr="/t/t/div/h2" position="attributes">
+            <attribute name="style" separator=";" add="margin-top:15px"/>
+        </xpath>
     </template>
 </odoo>
