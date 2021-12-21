@@ -7,9 +7,21 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_order']" position="replace">
                 <field name="date_order"/>
-            </xpath>  
+            </xpath>
+            
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                <field name="sale_country_id" attrs="{}" required="1"/>
+            </xpath>
+            
+            <xpath expr="//field[@name='analytic_account_id']" position="replace"/>
+            
+            <xpath expr="//group[@name='order_details']" position="inside">
+                <field name="analytic_account_id" 
+                       required="1"
+                       context="{'default_partner_id':partner_invoice_id, 'default_name':name}" 
+                       attrs="{'readonly': [('invoice_count','!=',0),('state','=','sale')]}" 
+                       groups="analytic.group_analytic_accounting" 
+                       force_save="1"/>
             </xpath>
         </field>
     </record>
