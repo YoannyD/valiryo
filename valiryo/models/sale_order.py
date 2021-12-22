@@ -15,3 +15,4 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
     
     sale_country_id = fields.Many2one("res.country", string="País pedido")
+    marketplace = fields.Boolean("Marketplace")
