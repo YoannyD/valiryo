@@ -12,7 +12,7 @@
     <template id="report_invoice_document_valiryo" inherit_id="account.report_invoice_document">
         <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
             <h2>
-                <span>Factura</span>
+                <span>Invoice</span>
                 <span t-if="o.name != '/'" t-field="o.name"/>
             </h2>
         </xpath>
