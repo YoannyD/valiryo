@@ -45,5 +45,21 @@
       </xpath>
      <xpath expr="/t[1]/t[1]/div[1]/div[9]/div[1]" position="replace"/>
      <xpath expr="/t[1]/t[1]/div[1]/div[8]/div[1]" position="replace"/>
+        
+        <xpath expr="//p[@t-if='not is_html_empty(doc.payment_term_id.note)']" position="before">
+            <div t-if="doc.transferencia_bancaria">
+                <h4 style="margin-bottom:4px;">Método de pago:</h4>
+                ENTIDAD BANCARIA: <span t-field="doc.bank_id.bank_id"/> <br/>
+                <t t-if="doc.bank_id.bank_id.bic">
+                    SWIFT: <span t-field="doc.bank_id.bank_id.bic"/> <br/>
+                </t>
+
+                IBAN: <span t-field="doc.bank_id.acc_number"/> <br/>
+                
+                <t t-if="doc.bank_id.partner_id">
+                    BENEFICIARIO: <span t-field="doc.bank_id.partner_id"/> <br/>
+                </t>
+            </div>
+        </xpath>
     </template>
 </odoo>
