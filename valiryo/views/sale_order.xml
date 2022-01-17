@@ -28,6 +28,15 @@
                        groups="analytic.group_analytic_accounting" 
                        force_save="1"/>
             </xpath>
+            
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="company_partner_id" invisible="1"/>
+                <field name="transferencia_bancaria"/>
+                <field name="bank_id" 
+                       context="{'default_partner_id': company_partner_id}"
+                       domain="[('partner_id', '=', company_partner_id)]"
+                       attrs="{'required': [('transferencia_bancaria', '=', True)]}"/>
+            </xpath>
         </field>
     </record>
     

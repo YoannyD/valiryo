@@ -2,3 +2,4 @@
 # © 2021 Ingetive - <info@ingetive.com>
 
 from . import models
+from . import wizard
