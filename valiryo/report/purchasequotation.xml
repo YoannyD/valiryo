@@ -8,5 +8,28 @@
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[2]" position="replace"/>
       <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[2]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[4]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[3]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]/span[1]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[3]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[2]" position="replace"/>
+      <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[2]/tr[1]/t[1]/td[2]" position="replace"/>
+      <xpath expr="/t/t/div/table/thead/tr/th[1]" position="after">
+            <th>
+              <span>Cantidad mínima</span>
+            </th>
+          </xpath>
+          <xpath expr="/t/t/div/table/tbody/t[2]/tr/t[1]/td[1]" position="after">
+            <td>
+              <span t-field="line.product_qty"/>
+            </td>
+          </xpath>
+          <xpath expr="/t/t/div/table/tbody/t[2]/t[3]/tr/td" position="attributes">
+            <attribute name="colspan">100</attribute>
+          </xpath>
+          <xpath expr="/t/t/div/table/thead/tr/th[2]/span" position="replace">
+            <span>Cant</span>
+      </xpath>
     </template>
 </odoo>
