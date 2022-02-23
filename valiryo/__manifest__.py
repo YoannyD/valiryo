@@ -16,6 +16,7 @@
         'purchase',
         'account',
         'account_reports',
+        'l10n_es_aeat_sii_oca',
     ],
     'data': [
         'security/valiryo_security.xml',

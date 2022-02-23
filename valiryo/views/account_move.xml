@@ -25,9 +25,24 @@
                 <attribute name="attrs">{'required': [('account_internal_group', 'in', ['income', 'expense'])]}</attribute>
             </xpath>
             
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='invoice_date']" position="attributes">
+                <attribute name="attrs">{"invisible": [["move_type","not in",["out_invoice","out_refund","in_invoice","in_refund","out_receipt","in_receipt"]]], "readonly": [["state","not in",["draft"]]]}</attribute>
+                <attribute name="required">1</attribute>
+            </xpath>
+            
             <xpath expr="//page[@id='other_tab']//field[@name='partner_bank_id']" position="before">
                 <field name="transferencia_bancaria"/>
             </xpath>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="account.view_out_invoice_tree">
+        <field name="name">account.move.tree.valiryo</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='amount_total_in_currency_signed']" position="after">
+            <field name="sii_state" optional="show"/>
+          </xpath>
         </field>
     </record>
 </odoo>
