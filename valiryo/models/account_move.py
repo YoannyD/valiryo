@@ -3,16 +3,37 @@
 
 import logging
 
-from odoo import models, fields, api
-from odoo.exceptions import ValidationError
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError, UserError
 
 _logger = logging.getLogger(__name__)
 
+
+class AccountJournal(models.Model):
+    _inherit = "account.journal"
+    
+    required_vat = fields.Boolean("Vat requerido", default=False)
+    
 
 class AccountMove(models.Model):
     _inherit = "account.move"
     
     transferencia_bancaria = fields.Boolean("Transferencia bancaria")
+    
+    @api.model
+    def create(self, vals):
+        res = super(AccountMove, self).create(vals)
+        if res.journal_id and res.journal_id.required_vat:
+            if res.partner_id and not res.partner_id.vat:
+                raise UserError(_('En este diario es obligatorio que el cliente %s tenga NIF', res.partner_id.name))
+        return res
+    
+    def write(self, vals):
+        res = super(AccountMove, self).write(vals)
+        if self.journal_id and self.journal_id.required_vat:
+            if self.partner_id and not self.partner_id.vat:
+                raise UserError(_('En este diario es obligatorio que el cliente %s tenga NIF', self.partner_id.name))
+        return res
 
     @api.onchange('partner_id')
     def _onchange_partner_id(self):
