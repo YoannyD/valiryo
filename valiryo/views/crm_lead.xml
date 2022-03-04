@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="valiryo.crm_lead_view_form">
+        <field name="name">valiryo.crm_lead_view_form</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="model">crm.lead</field>
+        <field name="arch" type="xml">
+            
+              <xpath expr="//field[@name='team_id']" position="after">
+                <field name="partner_id" string="Categoria Cliente"/>
+              </xpath>
+<!--            <xpath expr="//field[@name='categoria_cliente']" position="attributes">
+                <attribute name="widget">many2many_tags</attribute>
+            </xpath>-->
+        </field>
+    </record>
+</odoo>

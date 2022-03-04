@@ -30,6 +30,7 @@
         'views/stock_picking.xml',
         'views/account_move.xml',
         'views/res_partner.xml',
+        'views/crm_lead.xml',
     ],
     'assets': {
         'web.assets_backend': [
