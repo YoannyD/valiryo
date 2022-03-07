@@ -4,14 +4,10 @@
         <field name="name">valiryo.crm_lead_view_form</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="model">crm.lead</field>
-        <field name="arch" type="xml">
-            
+        <field name="arch" type="xml">    
               <xpath expr="//field[@name='team_id']" position="after">
-                <field name="partner_id" string="Categoria Cliente"/>
+                <field name="categoria_cliente" string="Categoria Cliente" widget='many2many_tags'/>
               </xpath>
-<!--            <xpath expr="//field[@name='categoria_cliente']" position="attributes">
-                <attribute name="widget">many2many_tags</attribute>
-            </xpath>-->
         </field>
     </record>
 </odoo>
