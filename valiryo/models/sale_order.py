@@ -20,6 +20,8 @@ class SaleOrder(models.Model):
     bank_id = fields.Many2one('res.partner.bank', string='Cuenta bancaria', check_company=True)
     company_partner_id = fields.Many2one("res.partner", compute="_compute_company_partner", 
                                          string="Contacto compañia")
+    importe_euros = fields.Monetary("Importe base €", compute="_compute_importe_euros", store = True)
+    
     
     @api.onchange('partner_id')
     def _onchange_partner_id_warning(self):
@@ -45,3 +47,19 @@ class SaleOrder(models.Model):
             'partner_bank_id': self.bank_id.id
         })
         return invoice_vals
+    
+    @api.depends("amount_untaxed", "date_order")
+    def _compute_importe_euros(self):
+        for r in self:
+            rate = 0
+            if r.date_order:
+                euro = self.env['res.currency.rate'].search([
+                    ('company_id', '=', r.company_id.id),
+                    ('currency_id', '=', r.currency_id.id),
+                    ('name', '<=', r.date_order.strftime('%Y-%m-%d'))
+                ], limit = 1)
+                if euro:
+                    rate = 1/euro.rate
+            importe_original = r.amount_untaxed
+            r.update({'importe_euros': importe_original * rate})
+            # Si no tasa para Euro el importe_validacion_euros sera igual a 0

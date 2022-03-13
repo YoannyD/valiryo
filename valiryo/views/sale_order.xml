@@ -59,6 +59,9 @@
               <xpath expr="//field[@name='activity_ids']" position="after">
                 <field name="sale_country_id"/>
               </xpath>
+              <xpath expr="//field[@name='state']" position="before">
+                <field name="importe_euros" optional="hide"/>
+              </xpath>
         </field>
     </record>
      
