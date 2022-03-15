@@ -57,4 +57,14 @@
           </xpath>
         </field>
     </record>
+    
+    <record model="ir.ui.view" id="account.view_in_invoice_bill_tree">
+        <field name="name">account.move_in.tree.valiryo</field>
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+          <xpath expr="//field[@name='amount_total_in_currency_signed']" position="after">
+            <field name="sii_state" optional="show"/>
+          </xpath>
+        </field>
+    </record>
 </odoo>
