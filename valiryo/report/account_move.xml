@@ -22,7 +22,7 @@
               <div class="col">
                 <span><p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”                    
 <br/><br/>EORI number: ESB71157135
-<br/>ESREX number: ESREX9935</p></span>
+<br/>ESREX number: ESREX9935<br/></p></span>
               </div>
             </div>
         </xpath>
@@ -41,7 +41,7 @@
         <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="after">
             <t t-if="o.transferencia_bancaria">
                 <h4 style="margin-bottom:4px;">Método de pago:</h4>
-                ENTIDAD BANCARIA: <span t-field="o.partner_bank_id.name"/> <br/>
+                ENTIDAD BANCARIA: <span t-field="o.partner_bank_id.bank_id.name"/> <br/>
                 <t t-if="o.partner_bank_id.bank_id.bic">
                     SWIFT/BIC: <span t-field="o.partner_bank_id.bank_id.bic"/> <br/>
                 </t>
