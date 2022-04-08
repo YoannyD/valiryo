@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--<record id="invoice_simplificada" model="ir.actions.report">
-        <field name="name">Factura Simplificada</field>
-        <field name="model">account.move</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">valiryo.report_invoice_document_valiryosimplificada2</field>
-        <field name="report_file">valiryo.report_invoice_document_valiryosimplificada2</field>
-        <field name="print_report_name">'Factura simplificada - %s' % (object.name)</field>
-    </record>-->
-    
     <template id="report_invoice_document_valiryo" inherit_id="account.report_invoice_document">
         <xpath expr="//div[hasclass('page')]/h2[1]" position="replace">
             <h2>
@@ -16,30 +7,37 @@
                 <span t-if="o.name != '/'" t-field="o.name"/>
             </h2>
         </xpath>
-        
+
         <xpath expr="/t/t/div/h2" position="before">
-            <div class="row">
-              <div class="col">
-                <span><p><br/>“The exporter of the products covered by this document [customs authorisation No ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are of European Union (Spain) preferential origin”                    
-<br/><br/>EORI number: ESB71157135
-<br/>ESREX number: ESREX9935<br/></p></span>
-              </div>
-            </div>
+            <t t-if="o.company_id.custom_invoice">
+                <div class="row">
+                    <div class="col">
+                        <span><p><br/>“The exporter of the products covered by this document [customs authorisation No
+                            ESEAOR19000018], declares that, except where otherwise clearly indicated, these products are
+                            of
+                            European Union (Spain) preferential origin”
+                            <br/><br/>EORI number: ESB71157135
+                            <br/>ESREX number: ESREX9935<br/></p></span>
+                    </div>
+                </div>
+            </t>
         </xpath>
-        
+
         <xpath expr="/t[1]/t[1]/div[1]/table[1]/tbody[1]/t[3]/tr[1]/t[1]/td[5]" position="replace"/>
         <xpath expr="/t[1]/t[1]/div[1]/table[1]/thead[1]/tr[1]/th[5]" position="replace"/>
-        
+
         <xpath expr="//div[@id='total']" position="after">
-            <div class="row">
-                <div class="col-4 pt-4">
-                    <img class="img-fluid" src="/valiryo/static/src/img/sello_valiryo.png"/>
+            <t t-if="o.company_id.custom_invoice">
+                <div class="row">
+                    <div class="col-4 pt-4">
+                        <img class="img-fluid" src="/valiryo/static/src/img/sello_valiryo.png"/>
+                    </div>
                 </div>
-            </div>
+            </t>
         </xpath>
-        
+
         <xpath expr="//p[@t-if='o.invoice_payment_term_id']" position="after">
-            <t t-if="o.transferencia_bancaria">
+            <t t-if="o.transferencia_bancaria and o.company_id.custom_invoice">
                 <h4 style="margin-bottom:4px;">Método de pago:</h4>
                 ENTIDAD BANCARIA: <span t-field="o.partner_bank_id.bank_id.name"/> <br/>
                 <t t-if="o.partner_bank_id.bank_id.bic">
@@ -47,7 +45,7 @@
                 </t>
 
                 IBAN: <span t-field="o.partner_bank_id.acc_number"/> <br/>
-                
+
                 <t t-if="o.partner_bank_id.partner_id">
                     BENEFICIARIO: <span t-field="o.partner_bank_id.partner_id"/> <br/>
                 </t>
@@ -55,14 +53,16 @@
             </t>
         </xpath>
     </template>
-    
-    <template id="stock_account_report_invoice_document" inherit_id="stock_account.stock_account_report_invoice_document">
+
+    <template id="stock_account_report_invoice_document"
+              inherit_id="stock_account.stock_account_report_invoice_document">
         <xpath expr="//t[@t-if='lot_values']" position="replace"/>
-        
+
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-if="lot_values">
                 <br/>
-                <table groups="stock_account.group_lot_on_invoice" class="table table-sm" style="width: 50%;" name="invoice_snln_table">
+                <table groups="stock_account.group_lot_on_invoice" class="table table-sm" style="width: 50%;"
+                       name="invoice_snln_table">
                     <thead>
                         <tr>
                             <th><span>Product</span></th>
