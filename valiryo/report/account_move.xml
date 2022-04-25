@@ -61,7 +61,7 @@
         <xpath expr="//div[hasclass('page')]" position="inside">
             <t t-if="lot_values">
                 <br/>
-                <table groups="stock_account.group_lot_on_invoice" class="table table-sm" style="width: 50%;"
+                <table groups="stock_account.group_lot_on_invoice" class="table table-sm" style="width: 100%;"
                        name="invoice_snln_table">
                     <thead>
                         <tr>
