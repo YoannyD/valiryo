@@ -17,6 +17,7 @@
         'account',
         'account_reports',
         'l10n_es_aeat_sii_oca',
+        'auth_api_key'
     ],
     'data': [
         'security/valiryo_security.xml',

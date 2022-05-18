@@ -50,7 +50,6 @@ class ValiryoAPI(http.Controller):
             'company_name': account.company_id.name or '',
             'name': account.name,
             'code': account.code or '',
-            'cuenta_consolidacion' : account.tetrace_account_id.name,
         }
         return values  
     
@@ -98,14 +97,14 @@ class ValiryoAPI(http.Controller):
         return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
     
     def get_values_bank_statement_line(self, line, currency_euro):
-        importe_euros = line.journal_currency_id._convert(line.amount, currency_euro, line.company_id, line.date)
+#         importe_euros = line.journal_currency_id._convert(line.amount, currency_euro, line.company_id, line.date)
         values = {
             'id': line.id,
             'company_id': line.company_id.id or '',
             'company_name': line.company_id.name or '',
             'fecha': line.date.strftime("%d/%m/%Y") if line.date else '',
             'diario': line.journal_id.name  or '',
-            'diario_moneda': line.journal_currency_id.name  or '',
+#             'diario_moneda': line.journal_currency_id.name  or '',
             'extracto': line.statement_id.name or '',
             'referencia': line.ref or '/',
             'etiqueta': line.name or '',
@@ -113,7 +112,7 @@ class ValiryoAPI(http.Controller):
             'importe': line.amount or 0,
             'moneda' : line.currency_id.name or '',
             'importe_moneda': line.amount_currency or 0,
-            'importe_euros': importe_euros
+#             'importe_euros': importe_euros
         }
         
         return values    
@@ -142,7 +141,6 @@ class ValiryoAPI(http.Controller):
             'asiento_contable': line.move_id.name or '', 
             'diario': line.journal_id.name  or '',
             'cuenta': line.account_id.code  or '',
-            'cuenta_consolidacion': line.tetrace_account_id.name  or '',
             'empresa': line.partner_id.name  or '',
             'etiqueta': line.name or '',
             'referencia': line.ref or '',
@@ -158,8 +156,6 @@ class ValiryoAPI(http.Controller):
             'asiento_conciliacion': line.full_reconcile_id.name  or '',         
             'cuenta_analitica': line.analytic_account_id.name  or '',
             'etiqueta_analitica': [l.name for l in line.analytic_tag_ids],
-            'asiento_anticipo_id': line.asiento_anticipo_id.name or '',
-            'confirmado': line.confirmado,
         }
         
         return values
@@ -185,36 +181,3 @@ class ValiryoAPI(http.Controller):
             'code': analytic.code or '',
         }
         return values    
-    
-    @http.route(['/api/v1/analytic.line.rel'], type='http', auth='api_key')
-    def listado_analytic_line_rel(self, fecha_desde=None, offset=0, limit=1000000, **kwargs):
-        domain = []
-        if fecha_desde: domain += [('date','>=', fecha_desde)] 
-        if limit: limit = int(limit)
-        if offset: offset = int(offset)
-        analytics = request.env['account.analytic.line.rel'].sudo().with_context(lang="es_ES").search(domain, offset=offset, limit=limit)
-        data = []
-        for analytic in analytics:
-            data.append(self.get_values_account_analytic_line_rel(analytic))
-
-        return request.make_response(json.dumps(data), headers=[('Content-Type', 'application/json')])
-    
-    def get_values_account_analytic_line_rel(self, analytic):        
-        values = {
-            'id': analytic.id,
-            'company_id': analytic.company_id.id or '',
-            'company_name': analytic.company_id.name,
-            'fecha': analytic.date.strftime("%d/%m/%Y") if analytic.date else '',
-            'cuenta': analytic.account_id.code  or '',
-            'cuenta_consolidacion': analytic.account_id.tetrace_account_id.name  or '',
-            'codigo_cuenta_consolidacion': analytic.account_id.tetrace_account_id.code  or '',
-            'cuenta_analitica': analytic.analytic_account_id.name  or '',
-            'estructurales': analytic.estructurales,
-            'moneda' : analytic.currency_id.name,
-            'asiento_contable': analytic.asiento_id.name or '', 
-            'debe': analytic.debit,
-            'haber': analytic.credit,
-            'importe_euro': analytic.importe_euro,
-        }
-        
-        return values
