@@ -37,8 +37,7 @@
             </xpath>
             
             <xpath expr="//form[1]/sheet[1]/group[1]/group[2]/field[@name='invoice_date']" position="attributes">
-                <attribute name="attrs">{"invisible": [["move_type","not in",["out_invoice","out_refund","in_invoice","in_refund","out_receipt","in_receipt"]]], "readonly": [["state","not in",["draft"]]]}</attribute>
-                <attribute name="required">1</attribute>
+                <attribute name="attrs">{"invisible": [["move_type","not in",["out_invoice","out_refund","in_invoice","in_refund","out_receipt","in_receipt"]]], "readonly": [["state","not in",["draft"]]], "required": [["financial_type","not in",["other"]]]}</attribute>
             </xpath>
                      
             <xpath expr="//page[@id='other_tab']//field[@name='partner_bank_id']" position="before">
