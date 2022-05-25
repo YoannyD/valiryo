@@ -47,8 +47,3 @@
 	path = OCA/server-auth
 	url = git@github.com:OCA/server-auth.git
 	branch = 15.0
-	
-[submodule "OCA/bank-payment"]
-	path = OCA/bank-payment
-	url = git@github.com:OCA/bank-payment.git
-	branch = 15.0
