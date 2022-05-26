@@ -16,6 +16,7 @@ class SaleOrder(models.Model):
     
     sale_country_id = fields.Many2one("res.country", string="País pedido")
     marketplace = fields.Boolean("Marketplace")
+    npedido = fields.Char("Número pedido")
     transferencia_bancaria = fields.Boolean("Transferencia bancaria")
     bank_id = fields.Many2one('res.partner.bank', string='Cuenta bancaria', check_company=True)
     company_partner_id = fields.Many2one("res.partner", compute="_compute_company_partner", 

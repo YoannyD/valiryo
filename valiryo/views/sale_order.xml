@@ -12,6 +12,7 @@
             <xpath expr="//field[@name='partner_shipping_id']" position="after">
                <field name="sale_country_id" attrs="{}" required="1"/>
                <field name="marketplace" string="Marketplace"/>
+               <field name="npedido" string="Número pedido" attrs="{'required': [('marketplace', '=', True)]}"/> 
             </xpath>
             
             <xpath expr="//field[@name='marketplace']" position="attributes">
@@ -47,6 +48,11 @@
         <field name="arch" type="xml">
               <xpath expr="//field[@name='activity_ids']" position="after">
                 <field name="sale_country_id"/>
+                <field name="marketplace"/>
+                <field name="npedido"/>
+              </xpath>
+              <xpath expr="//field[@name='marketplace']" position="attributes">
+                <attribute name="widget">boolean_toggle</attribute>
               </xpath>
         </field>
     </record>
@@ -58,6 +64,11 @@
         <field name="arch" type="xml">
               <xpath expr="//field[@name='activity_ids']" position="after">
                 <field name="sale_country_id"/>
+                <field name="marketplace" optional="hide"/>
+                <field name="npedido" optional="hide"/>               
+              </xpath>
+              <xpath expr="//field[@name='marketplace']" position="attributes">
+                <attribute name="widget">boolean_toggle</attribute>
               </xpath>
               <xpath expr="//field[@name='state']" position="before">
                 <field name="importe_euros" optional="hide"/>
