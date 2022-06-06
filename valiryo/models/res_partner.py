@@ -15,6 +15,8 @@ class Partner(models.Model):
     transferencia_bancaria = fields.Boolean("Transferencia bancaria")
     company_partner_id = fields.Many2one("res.partner", compute="_compute_company_partner", 
                                          string="Contacto compañia")
+    payment_method_id = fields.Many2one('account.payment.method', string='Método de pago',
+                                        domain=[('payment_type', '=', 'inbound')])
     
     def _compute_company_partner(self):
         for r in self:

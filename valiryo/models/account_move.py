@@ -21,6 +21,8 @@ class AccountMove(models.Model):
     _inherit = "account.move"
     
     transferencia_bancaria = fields.Boolean("Transferencia bancaria")
+    payment_method_id = fields.Many2one('account.payment.method', string='Método de pago',
+                                        domain=[('payment_type', '=', 'inbound')])
     
     @api.model
     def create(self, vals):
@@ -45,6 +47,9 @@ class AccountMove(models.Model):
             self.partner_bank_id = self.partner_id.bank_id.id
             
         self.transferencia_bancaria = self.partner_id.transferencia_bancaria
+
+        if self.partner_id.payment_method_id:
+            self.payment_method_id = self.partner_id.payment_method_id
         return res
     
     def action_post(self):
@@ -151,3 +156,11 @@ class AccountMove(models.Model):
                 'lot_id': lot_id.id
             })
         return lot_values
+
+    def action_register_payment(self):
+        self.ensure_one()
+        action = super(AccountMove, self).action_register_payment()
+        action['context'].update({
+            'default_payment_method_id': self.payment_method_id.id or None
+        })
+        return action
