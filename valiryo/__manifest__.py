@@ -34,6 +34,7 @@
         'views/crm_lead.xml',
         'views/res_company.xml',
         'data/company_data.xml',
+        'wizard/account_payment_register_views.xml'
     ],
     'assets': {
         'web.assets_backend': [
