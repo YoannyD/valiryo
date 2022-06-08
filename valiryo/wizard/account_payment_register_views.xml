@@ -9,11 +9,6 @@
             <xpath expr="//field[@name='payment_method_line_id']" position="before">
                 <field name="payment_method_id" invisible="1"/>
             </xpath>
-            <xpath expr="//field[@name='payment_method_line_id']" position="attributes">
-                <attribute name="domain">
-                    [('id', 'in', available_payment_method_line_ids), ('payment_method_id', '=', payment_method_id)]
-                </attribute>
-            </xpath>
         </field>
     </record>
 
