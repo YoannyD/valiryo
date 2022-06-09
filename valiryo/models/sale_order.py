@@ -22,8 +22,6 @@ class SaleOrder(models.Model):
     company_partner_id = fields.Many2one("res.partner", compute="_compute_company_partner", 
                                          string="Contacto compañia")
     importe_euros = fields.Monetary("Importe base €", compute="_compute_importe_euros", store=True)
-    payment_method_id = fields.Many2one('account.payment.method', string='Método de pago',
-                                        domain=[('payment_type', '=', 'inbound')])
 
     @api.onchange('partner_id')
     def _onchange_partner_id_warning(self):
@@ -36,9 +34,6 @@ class SaleOrder(models.Model):
             self.bank_id = self.partner_id.bank_id.id
             
         self.transferencia_bancaria = self.partner_id.transferencia_bancaria
-
-        if self.partner_id.payment_method_id:
-            self.payment_method_id = self.partner_id.payment_method_id
         return res
     
     def _compute_company_partner(self):
@@ -49,8 +44,7 @@ class SaleOrder(models.Model):
         invoice_vals = super(SaleOrder, self)._prepare_invoice()
         invoice_vals.update({
             'transferencia_bancaria': self.transferencia_bancaria,
-            'partner_bank_id': self.bank_id.id,
-            'payment_method_id': self.payment_method_id.id or None
+            'partner_bank_id': self.bank_id.id
         })
         return invoice_vals
     

@@ -17,7 +17,8 @@
         'account',
         'account_reports',
         'l10n_es_aeat_sii_oca',
-        'auth_api_key'
+        'auth_api_key',
+        'account_payment_mode'
     ],
     'data': [
         'security/valiryo_security.xml',
@@ -33,8 +34,7 @@
         'views/res_partner.xml',
         'views/crm_lead.xml',
         'views/res_company.xml',
-        'data/company_data.xml',
-        'wizard/account_payment_register_views.xml'
+        'data/company_data.xml'
     ],
     'assets': {
         'web.assets_backend': [

@@ -19,8 +19,7 @@ class SaleAdvancePaymentInv(models.TransientModel):
         res = super(SaleAdvancePaymentInv, self)._prepare_invoice_values(order, name, amount, so_line)
         res.update({
             'transferencia_bancaria': order.transferencia_bancaria,
-            'partner_bank_id': order.bank_id.id,
-            'payment_method_id': order.payment_method_id.id or None,
+            'partner_bank_id': order.bank_id.id
         })
         return res
         
