@@ -12,8 +12,10 @@
                        context="{'default_partner_id': company_partner_id}"
                        domain="[('partner_id', '=', company_partner_id)]"
                        attrs="{'required': [('transferencia_bancaria', '=', True)]}"/>
-                <field name="payment_mode_id" options="{'no_create': True, 'no_open': True}"/>
             </xpath>
+            <group name="purchase" position="inside">
+                <field name="payment_mode_id" options="{'no_create': True, 'no_open': True}"/>
+            </group>
         </field>
     </record>
 </odoo>
