@@ -156,11 +156,3 @@ class AccountMove(models.Model):
                 'lot_id': lot_id.id
             })
         return lot_values
-
-    def action_register_payment(self):
-        self.ensure_one()
-        action = super(AccountMove, self).action_register_payment()
-        action['context'].update({
-            'default_payment_method_id': self.payment_method_id.id or None
-        })
-        return action
